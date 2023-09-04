@@ -38,7 +38,9 @@ resource "aws_instance" "bastion" {
               sudo chmod +x kubectl
               sudo mv kubectl /usr/local/bin/
               EOF
-
+  tags = merge(var.resource_tags, {
+    Name = "Bastion Host"
+  })
   # tags = {
   #   Name        = "${var.project}-Bastion-Host"
   #   project     = var.project
