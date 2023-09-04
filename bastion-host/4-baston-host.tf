@@ -2,7 +2,7 @@
 resource "aws_security_group" "bastion-sg" {
   name        = "bastion-sg"
   description = "Security group for the bastion host"
-  vpc_id      = aws_vpc.new-test.id
+  vpc_id      = var.vpc_id
 
   # Allow SSH access (adjust the source IP as needed)
   ingress {
@@ -24,8 +24,8 @@ resource "aws_security_group" "bastion-sg" {
 # Create an EC2 instance for the bastion host
 resource "aws_instance" "bastion" {
   ami                    = var.bastion-ami
-  instance_type          = "t2.micro"
-  subnet_id              = aws_subnet.bastion-subnet.id
+  instance_type          = var.instance_type
+  subnet_id              = var.subnet_id
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.bastion-sg.id]
 
