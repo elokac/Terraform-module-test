@@ -21,8 +21,6 @@ resource "aws_subnet" "public-subnet-1" {
   availability_zone       = "us-east-1a"
   tags = {
     Name                                        = "public subnet 1"
-    "kubernetes.io/role/internal-elb"           = "1"
-    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
     project                                     = var.project
     createdby                                   = var.createdby
     environment                                 = lookup(var.environment, terraform.workspace)
@@ -37,8 +35,6 @@ resource "aws_subnet" "public-subnet-2" {
   availability_zone       = "us-east-1b"
   tags = {
     Name                                        = "public subnet 2"
-    "kubernetes.io/role/internal-elb"           = "1"
-    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
     project                                     = var.project
     createdby                                   = var.createdby
     environment                                 = lookup(var.environment, terraform.workspace)
@@ -53,8 +49,6 @@ resource "aws_subnet" "private-subnet-1" {
   availability_zone       = "us-east-1a"
   tags = {
     Name                                        = "Private Subnet 1"
-    "kubernetes.io/role/elb"                    = "1"
-    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
     project                                     = var.project
     createdby                                   = var.createdby
     environment                                 = lookup(var.environment, terraform.workspace)
@@ -69,8 +63,6 @@ resource "aws_subnet" "private-subnet-2" {
   availability_zone       = "us-east-1b"
   tags = {
     Name                                        = "Private Subnet 2"
-    "kubernetes.io/role/elb"                    = "1"
-    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
     project                                     = var.project
     createdby                                   = var.createdby
     environment                                 = lookup(var.environment, terraform.workspace)
